@@ -29,9 +29,9 @@ const collateral = '20'
 
 const assetItem = {
     name: 'Test asset item',
-    earningGoal: ethers.utils.parseUnits(earningGoal, 18),
-    durationHours: durationHours,
-    initialWorth: ethers.utils.parseUnits(collateral, 18),
+    earningGoal: ethers.utils.parseUnits(earningGoal, 18).toString(),
+    durationHours: BigNumber.from(durationHours).toString(),
+    initialWorth: ethers.utils.parseUnits(collateral, 18).toString(),
     currency: 1 // DAI = 1, USDC = 2, OORT = 3
 }
 
@@ -42,8 +42,9 @@ const main = async () => {
 
     // check if need approve
     if(!await erc1155Contract.isApprovedForAll(wallet.address, poolAddress)) {
+        // set approve to pool
         const approveTransaction = await erc1155Contract.setApprovalForAll(poolAddress, true);
-        console.log(`Approve in process. Tx: ${approveTransaction.hash}`)
+        console.log(`Approve in process. ${approveTransaction.hash}`)
         await approveTransaction.wait();
     }
     
