@@ -13,7 +13,17 @@ const asset = {
     contractAddress: '0x3063F204BeA3B55A688a5043299F57d0cBcDac0B',
     // 0 - ERC 721, 1 - ERC 1155
     assetType: 1,
-    projectName: 'Test NFT'
+    projectName: 'Test Asset'
+}
+
+const pricePerHour = 1 // 1 DAI
+const durationHours = 2 // 2 hours
+
+const assetItem = {
+    name: 'Test asset item',
+    earningGoal: ethers.utils.parseUnits(pricePerHour * durationHours, 18),
+    durationHours: durationHours,
+    currency: 1 //  DAI = 1, USDC = 2, OORT = 3
 }
 
 const tokenId = 1
@@ -21,10 +31,11 @@ const amount = 5
 
 const main = async () => {
 
-    const tx = await contract.setLendSettings(asset, [tokenId], [amount], assetItems)
+    const tx = await contract.setLendSettings(asset, [tokenId], [amount], [assetItem])
 
+    console.log(`Transaction in process. ${tx.hash}`)
     await tx.wait()
-    console.log(tx)
+    console.log(`Transaction success. ${tx.hash}`)
 }
 
 main()
