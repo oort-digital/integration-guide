@@ -1,0 +1,7 @@
+{
+  "name": "integartion-guide",
+  "version": "0.0.1",
+  "dependencies": {
+    "ethers": "^5.7.2"
+  }
+}
