@@ -1,8 +1,8 @@
 const { ethers } = require("ethers");
-const {privateKey, infuraId} = require('../secrets.json');
-const abi = require('../abi/collateral.json');
+const { privateKey, rpc } = require('../secrets.json');
+const { abi } = require('../abi/collateral.json');
 
-const provider = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${infuraId}`)
+const provider = new ethers.providers.JsonRpcProvider(rpc)
 
 const wallet = new ethers.Wallet(privateKey, provider)
 
