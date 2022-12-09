@@ -1,11 +1,12 @@
 const { ethers } = require("ethers");
-const {privateKey, infuraId} = require('./secrets.json');
+const {privateKey, infuraId} = require('../secrets.json');
+const abi = require('../abi/collateral.json');
 
 const provider = new ethers.providers.JsonRpcProvider(`https://goerli.infura.io/v3/${infuraId}`)
 
 const wallet = new ethers.Wallet(privateKey, provider)
 
-const contract = new ethers.Contract('0x1475880E1a9C3fb741698Cd448f67dE8eD210F3F', ERC20_ABI, wallet)
+const contract = new ethers.Contract('0x1475880E1a9C3fb741698Cd448f67dE8eD210F3F', abi, wallet)
 
 const asset = {
     // some NFT contract address, that you want to add to rent pool
