@@ -39,3 +39,9 @@ Chose the example file and run it, like this one<br/>
 ```
 node .\lowCollateral\2_removeFromLending.js
 ```
+
+### Collateral use cases
+1. [Add to rent pool](lowCollateral/1_setLendSettings.js)
+2. [Remove from rent pool](lowCollateral/2_removeFromLending.js)
+
+
