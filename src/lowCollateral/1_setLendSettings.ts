@@ -1,10 +1,7 @@
 import { ethers, BigNumber } from "ethers"
 import { Collateral__factory, Erc1155__factory } from "../generated";
-import { lenderPK, rpc } from '../secrets'
+import { lenderWallet } from "../wallets";
 
-const provider = new ethers.providers.JsonRpcProvider(rpc)
-
-const lenderWallet = new ethers.Wallet(lenderPK, provider)
 
 // mumbai collateral address
 const poolAddress = '0xD6dE6Ca4dcc9Bf3e8BbC4130725A7D795B40c812'
@@ -35,7 +32,7 @@ const assetItem = {
     currency: 1 // DAI = 1, USDC = 2, OORT = 3
 }
 
-const tokenId = BigNumber.from(1)
+const tokenId = BigNumber.from(7)
 const amount = 5
 
 const main = async () => {
