@@ -1,5 +1,5 @@
 const { ethers, BigNumber } = require("ethers");
-const { lenderPK, rpc } = require('../secrets.json');
+const { lenderPK, rpc } = require('../../secrets.json');
 const poolAbi = require('../abi/collateral.json').abi;
 const erc1155Abi = require('../abi/erc1155.json').abi;
 
