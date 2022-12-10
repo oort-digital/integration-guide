@@ -37,6 +37,8 @@ const amount = 5
 
 const main = async () => {
 
+    // lender - add his asset to rent pool
+    
     // check if need approve
     if(!await erc1155Contract.isApprovedForAll(lenderWallet.address, poolAddress)) {
         // set approve to pool

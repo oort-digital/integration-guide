@@ -35,7 +35,7 @@ const amount = 5
 
 const main = async () => {
 
-    // 1_setLendSettings
+    // lender - add his asset to rent pool
 
     // check if need approve
     if(!await erc1155Contract.isApprovedForAll(lenderWallet.address, poolAddress)) {
@@ -51,10 +51,9 @@ const main = async () => {
     await tx.wait()
     console.log(`SetLendSettings success. ${tx.hash}`)
 
-    // 2_removeFromLending
+    // lender - remove his asset from rent pool
 
     tx = await poolContract.removeFromLending(erc1155Contract.address, [tokenId])
-
     console.log(`RemoveFromLending in process. ${tx.hash}`)
     await tx.wait()
     console.log(`RemoveFromLending success. ${tx.hash}`)
