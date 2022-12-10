@@ -1,5 +1,5 @@
 const { ethers, BigNumber } = require("ethers");
-const { privateKey: lenderPK, rpc } = require('../secrets.json');
+const { lenderPK, rpc } = require('../secrets.json');
 const poolAbi = require('../abi/collateral.json').abi;
 const erc1155Abi = require('../abi/erc1155.json').abi;
 
@@ -40,6 +40,8 @@ const amount = 5
 
 const main = async () => {
 
+    // 1_setLendSettings
+
     // check if need approve
     if(!await erc1155Contract.isApprovedForAll(lenderWallet.address, poolAddress)) {
         // set approve to pool
@@ -48,11 +50,19 @@ const main = async () => {
         await approveTransaction.wait();
     }
     
-    const tx = await poolContract.setLendSettings(asset, [tokenId], [amount], [assetItem])
+    let tx = await poolContract.setLendSettings(asset, [tokenId], [amount], [assetItem])
 
-    console.log(`Transaction in process. ${tx.hash}`)
+    console.log(`SetLendSettings in process. ${tx.hash}`)
     await tx.wait()
-    console.log(`Transaction success. ${tx.hash}`)
+    console.log(`SetLendSettings success. ${tx.hash}`)
+
+    // 2_removeFromLending
+
+    tx = await poolContract.removeFromLending(erc1155.address, [lendTokenId])
+
+    console.log(`RemoveFromLending in process. ${tx.hash}`)
+    await tx.wait()
+    console.log(`RemoveFromLending success. ${tx.hash}`)
 }
 
 main()
