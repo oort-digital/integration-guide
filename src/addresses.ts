@@ -1,0 +1,2 @@
+export const collateralPollAddress = '0xD6dE6Ca4dcc9Bf3e8BbC4130725A7D795B40c812'
+export const zeroCollateralPollAddress = '0xd0b15fB519A21E634D7B82e470d70A99E819B7A6'

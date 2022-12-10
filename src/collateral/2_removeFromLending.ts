@@ -1,10 +1,11 @@
 import { ethers, BigNumber } from "ethers"
+import { collateralPollAddress } from "../addresses";
 import { Collateral__factory, Erc1155__factory } from "../generated";
 import { lenderWallet } from "../wallets";
 
 // mumbai collateral address
-const poolAddress = '0xD6dE6Ca4dcc9Bf3e8BbC4130725A7D795B40c812'
-const poolContract = Collateral__factory.connect(poolAddress, lenderWallet)
+
+const poolContract = Collateral__factory.connect(collateralPollAddress, lenderWallet)
 
 // some NFT contract address, that you want to add to rent pool
 const erc1155Address = '0x4F58CF0FE470562C8738323BA927E6c2EBed1CD0'
@@ -38,9 +39,9 @@ const main = async () => {
     // lender - add his asset to rent pool
 
     // check if need approve
-    if(!await erc1155Contract.isApprovedForAll(lenderWallet.address, poolAddress)) {
+    if(!await erc1155Contract.isApprovedForAll(lenderWallet.address, collateralPollAddress)) {
         // set approve to pool
-        const approveTransaction = await erc1155Contract.setApprovalForAll(poolAddress, true);
+        const approveTransaction = await erc1155Contract.setApprovalForAll(collateralPollAddress, true);
         console.log(`Approve in process. ${approveTransaction.hash}`)
         await approveTransaction.wait();
     }
