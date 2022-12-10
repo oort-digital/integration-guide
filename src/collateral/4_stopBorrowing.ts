@@ -1,5 +1,5 @@
 import { ethers, BigNumber } from "ethers"
-import { collateralPollAddress } from "../addresses";
+import { collateralPollAddress, daiAddress, erc1155Address } from "../addresses";
 import { Collateral__factory, Erc1155__factory, Erc20__factory } from "../generated";
 import { borrowerWallet, lenderWallet } from "../wallets";
 
@@ -7,10 +7,8 @@ import { borrowerWallet, lenderWallet } from "../wallets";
 const poolContract = Collateral__factory.connect(collateralPollAddress, lenderWallet)
 
 // some NFT contract address, that you want to add to rent pool
-const erc1155Address = '0x4F58CF0FE470562C8738323BA927E6c2EBed1CD0'
 const erc1155Contract = Erc1155__factory.connect(erc1155Address, lenderWallet)
 
-const daiAddress = '0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F'
 const daiContract = Erc20__factory.connect(daiAddress, lenderWallet)
 
 const asset = {
