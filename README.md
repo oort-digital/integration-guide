@@ -15,33 +15,33 @@ or</br>
 yarn install
 ```
 
+### Edit secrets.ts
+Fill [secrets.ts](src/secrets.json) 
+
+**rpc** - fill any mumbai rpc url. You may use [INFURA](https://www.infura.io) or some [free rpc](https://chainlist.org/chain/80001)<br/>
+**menomic** - seed phrase.<br/>
 
 ### Prepare wallets
-Lender wallet.  
+Use [Metamask](https://metamask.io/) or other wallet to generate two accounts from seed phares.<br/>
+
+1) Lender account.  
 This wallet must own some ERC721 and ERC1155 NFTs, to provide theme for rent.  
 You can see lender NFTs here (https://rent-test.oort.digital/lend/my-nfts)
 
-Borrower wallet.  
+2) Borrower account.  
 This wallet must have enought DAI to pay for NFTs rent.<br/>
 In examples we use [test DAI token](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F)  
 To get it - go by [link](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F#writeContract), connect borrower wallet and execute **mint** method
 
 
-### Fill secrets.json
-Fill all fields in a [secrets.json](secrets.json) 
-
-**rpc** - fill any mumbai rpc url. You may use [INFURA](https://www.infura.io) or some [free rpc](https://chainlist.org/chain/80001)<br/>
-**lenderPK** - fill lender wallet private key.<br/>
-**borrowerPK**: fill borrower wallet private key.<br/>
-
 ### Run example
-Chose the example file and run it, like this one<br/>
+Chose file with example (see use cases bellow) and run it, like this one<br/>
 ```
-node .\lowCollateral\2_removeFromLending.js
+yarn ts-node .\src\lowCollateral\3_startBorrowing.ts
 ```
 
 ### Collateral use cases
-1. [Add to rent pool](lowCollateral/1_setLendSettings.js)
-2. [Remove from rent pool](lowCollateral/2_removeFromLending.js)
+1. [Add to rent pool](src/lowCollateral/1_setLendSettings.ts)
+2. [Remove from rent pool](src/lowCollateral/2_removeFromLending.ts)
 
 
