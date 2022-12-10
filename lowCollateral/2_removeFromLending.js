@@ -58,7 +58,7 @@ const main = async () => {
 
     // 2_removeFromLending
 
-    tx = await poolContract.removeFromLending(erc1155.address, [lendTokenId])
+    tx = await poolContract.removeFromLending(erc1155Contract.address, [tokenId])
 
     console.log(`RemoveFromLending in process. ${tx.hash}`)
     await tx.wait()
