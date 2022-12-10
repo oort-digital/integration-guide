@@ -1,5 +1,5 @@
 # integration-guide
-This repository have a differet examples of using Oort Rent solution.
+This repository have a differet examples of using Oort Rent solution.<br/>
 All examples use [Mumbai](https://mumbai.polygonscan.com) test network.
 
 
