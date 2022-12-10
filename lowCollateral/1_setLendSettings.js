@@ -1,5 +1,5 @@
 const { ethers, BigNumber } = require("ethers");
-const { privateKey: lenderPK, rpc } = require('../secrets.json');
+const { lenderPK, rpc } = require('../secrets.json');
 const poolAbi = require('../abi/collateral.json').abi;
 const erc1155Abi = require('../abi/erc1155.json').abi;
 
@@ -50,9 +50,9 @@ const main = async () => {
     
     const tx = await poolContract.setLendSettings(asset, [tokenId], [amount], [assetItem])
 
-    console.log(`Transaction in process. ${tx.hash}`)
+    console.log(`setLendSettings in process. ${tx.hash}`)
     await tx.wait()
-    console.log(`Transaction success. ${tx.hash}`)
+    console.log(`setLendSettings success. ${tx.hash}`)
 }
 
 main()
