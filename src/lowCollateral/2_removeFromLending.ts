@@ -1,6 +1,6 @@
 import { ethers, BigNumber } from "ethers"
 import { Collateral__factory, Erc1155__factory } from "../generated";
-import { lenderPK, rpc } from '../secrets.json'
+import { lenderPK, rpc } from '../secrets'
 
 const provider = new ethers.providers.JsonRpcProvider(rpc)
 
