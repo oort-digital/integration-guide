@@ -1,7 +1,6 @@
-const { ethers, BigNumber } = require("ethers");
-const { lenderPK, rpc } = require('../../secrets.json');
-const poolAbi = require('../abi/collateral.json').abi;
-const erc1155Abi = require('../abi/erc1155.json').abi;
+import { ethers, BigNumber } from "ethers"
+import { Collateral__factory, Erc1155__factory } from "../generated";
+import { lenderPK, rpc } from '../secrets.json'
 
 const provider = new ethers.providers.JsonRpcProvider(rpc)
 
@@ -9,11 +8,12 @@ const lenderWallet = new ethers.Wallet(lenderPK, provider)
 
 // mumbai collateral address
 const poolAddress = '0xD6dE6Ca4dcc9Bf3e8BbC4130725A7D795B40c812'
-const poolContract = new ethers.Contract(poolAddress, poolAbi, lenderWallet)
+
+const poolContract = Collateral__factory.connect(poolAddress, lenderWallet)
 
 // some NFT contract address, that you want to add to rent pool
 const erc1155Address = '0x4F58CF0FE470562C8738323BA927E6c2EBed1CD0'
-const erc1155Contract = new ethers.Contract(erc1155Address, erc1155Abi, lenderWallet)
+const erc1155Contract = Erc1155__factory.connect(erc1155Address, lenderWallet)
 
 const asset = {
     contractAddress: erc1155Address,
