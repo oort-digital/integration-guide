@@ -1,7 +1,14 @@
 {
   "name": "integartion-guide",
   "version": "0.0.1",
+  "scripts": {
+    "generate-types": "typechain --target=ethers-v5 'abi/*.json'",
+    "postinstall": "yarn generate-types"
+  },
   "dependencies": {
-    "ethers": "^5.7.2"
+    "@typechain/ethers-v5": "^10.1.1",
+    "ethers": "^5.7.2",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.1.1"
   }
 }
