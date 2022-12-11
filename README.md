@@ -41,9 +41,11 @@ yarn ts-node .\src\lowCollateral\3_startBorrowing.ts
 ```
 
 ### Collateral use cases
+1. [Lender add asset to rent pool](src/collateral/1_setLendSettings.ts)
+2. [Lender remove asset from rent pool](src/collateral/2_removeFromLending.ts)
+3. [Borrower rent asset](src/collateral/3_startBorrowing.ts)
+4. [Borrower finish rent](src/collateral/4_stopBorrowing.ts)
+
+
+### Low collateral use cases
 1. [Lender add asset to rent pool](src/lowCollateral/1_setLendSettings.ts)
-2. [Lender remove asset from rent pool](src/lowCollateral/2_removeFromLending.ts)
-3. [Borrower rent asset](src/lowCollateral/3_startBorrowing.ts)
-4. [Borrower finish rent](src/lowCollateral/4_stopBorrowing.ts)
-
-
