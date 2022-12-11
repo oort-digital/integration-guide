@@ -37,7 +37,7 @@ To get it - go by [link](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714
 ### Run example
 Chose file with example (see use cases bellow) and run it, like this one<br/>
 ```
-yarn ts-node .\src\lowCollateral\3_startBorrowing.ts
+yarn ts-node .\src\collateral\1_addAndRemoveFromLendPool.ts
 ```
 
 ### Collateral use cases
