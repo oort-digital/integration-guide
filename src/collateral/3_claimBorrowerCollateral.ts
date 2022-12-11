@@ -1,3 +1,11 @@
+// Preparation
+// 1. go to https://rent-test.oort.digital
+// 2. As lender - add some nft to rent bool
+// 3. As borrower - borrow this nft
+// 4. Wait until rent time is up
+// 5. do this example
+
+
 import { ethers, BigNumber } from "ethers"
 import { collateralPollAddress, daiAddress, erc1155Address } from "../addresses";
 import { Collateral__factory, Erc1155__factory, Erc20__factory } from "../generated";
@@ -39,7 +47,7 @@ const main = async () => {
     const nftForLend = await poolContract.lentNFTList(erc1155Address, tokenId, lenderWallet.address)
     const borrowedAtTimestamp = nftForLend.lendingData.borrowedAtTimestamp.toNumber()
     if(borrowedAtTimestamp === 0) {
-        throw new Error('Token not found')
+        throw new Error('Token was not borrowed')
         // return
     }
 
