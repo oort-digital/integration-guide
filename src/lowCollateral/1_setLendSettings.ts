@@ -26,7 +26,7 @@ const assetItem = {
     currency: 1 // DAI = 1, USDC = 2, OORT = 3
 }
 
-const tokenId = BigNumber.from(7)
+const tokenId = BigNumber.from(1)
 const amount = 5
 
 const main = async () => {
@@ -35,7 +35,7 @@ const main = async () => {
     
     // check if need approve
     const approvedAddress = await erc721Contract.getApproved(tokenId)
-    if(!approvedAddress || approvedAddress.toLowerCase() === lenderWallet.address.toLowerCase()) {
+    if(approvedAddress.toLowerCase() !== lenderWallet.address.toLowerCase()) {
         // set approve to pool
         const approveTransaction = await erc721Contract.approve(lowCollateralPollAddress, tokenId)
         console.log(`Approve in process. ${approveTransaction.hash}`)
