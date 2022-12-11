@@ -35,7 +35,7 @@ const main = async () => {
     
     // check if need approve
     const approvedAddress = await erc721Contract.getApproved(tokenId)
-    if(approvedAddress.toLowerCase() !== lenderWallet.address.toLowerCase()) {
+    if(approvedAddress.toLowerCase() !== lowCollateralPollAddress.toLowerCase()) {
         // set approve to pool
         const approveTransaction = await erc721Contract.approve(lowCollateralPollAddress, tokenId)
         console.log(`Approve in process. ${approveTransaction.hash}`)
