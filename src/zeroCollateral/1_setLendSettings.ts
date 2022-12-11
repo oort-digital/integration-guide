@@ -1,9 +1,9 @@
 import { ethers, BigNumber } from "ethers"
-import { erc721Address, zeroCollateralPollAddress } from "../addresses";
+import { erc721Address, lowCollateralPollAddress } from "../addresses";
 import { Erc721__factory, LowCollateral__factory } from "../generated";
 import { lenderWallet } from "../wallets";
 
-const poolContract = LowCollateral__factory.connect(zeroCollateralPollAddress, lenderWallet)
+const poolContract = LowCollateral__factory.connect(lowCollateralPollAddress, lenderWallet)
 
 // some NFT contract address, that you want to add to rent pool
 const erc721Contract = Erc721__factory.connect(erc721Address, lenderWallet)
@@ -37,7 +37,7 @@ const main = async () => {
     const approvedAddress = await erc721Contract.getApproved(tokenId)
     if(!approvedAddress || approvedAddress.toLowerCase() === lenderWallet.address.toLowerCase()) {
         // set approve to pool
-        const approveTransaction = await erc721Contract.approve(zeroCollateralPollAddress, tokenId)
+        const approveTransaction = await erc721Contract.approve(lowCollateralPollAddress, tokenId)
         console.log(`Approve in process. ${approveTransaction.hash}`)
         await approveTransaction.wait();
     }
