@@ -1,14 +1,14 @@
 // Preparation
 // 1. go to https://rent-test.oort.digital
-// 2. As lender - add some nft to rent bool
-// 3. As borrower - borrow this nft
-// 4. Wait until rent time is up
-// 5. do this example
-
+// 2. As lender - you must own NFT with address=erc1155Address and tokenId=erc1155TokenId
+// 3. As lender - add this NFT to rent pool
+// 4. As borrower - borrow this nft
+// 5. Wait until rent time is up
+// 6. do this example
 
 import { ethers, BigNumber } from "ethers"
-import { collateralPollAddress, daiAddress, erc1155Address } from "../addresses";
-import { Collateral__factory, Erc1155__factory, Erc20__factory } from "../generated";
+import { collateralPollAddress, daiAddress, erc1155Address, erc1155TokenId } from "../addresses";
+import { Collateral__factory, Erc1155__factory } from "../generated";
 import { borrowerWallet, lenderWallet } from "../wallets";
 
 // mumbai collateral address
@@ -17,43 +17,35 @@ const poolContract = Collateral__factory.connect(collateralPollAddress, lenderWa
 // some NFT contract address, that you want to add to rent pool
 const erc1155Contract = Erc1155__factory.connect(erc1155Address, lenderWallet)
 
-const daiContract = Erc20__factory.connect(daiAddress, lenderWallet)
-
-const asset = {
-    contractAddress: erc1155Address,
-    // 0 - ERC 721, 1 - ERC 1155
-    assetType: 1,
-    projectName: 'Test Asset'
-}
-
-const pricePerHour = 1 // 1 DAI
-const durationHours = 2 // 2 hours
-const earningGoal = ethers.utils.parseUnits(`${pricePerHour * durationHours}`, 18) // 2 DAI
-const collateral = ethers.utils.parseUnits('20', 18) // 20 DAI
-
-const assetItem = {
-    name: 'Test asset item',
-    earningGoal: earningGoal.toString(),
-    durationHours: BigNumber.from(durationHours).toString(),
-    initialWorth: collateral.toString(),
-    currency: 1 // DAI = 1, USDC = 2, OORT = 3
-}
-
-const tokenId = BigNumber.from(1)
-const amount = 5
-
 const main = async () => {
 
-    const nftForLend = await poolContract.lentNFTList(erc1155Address, tokenId, lenderWallet.address)
-    const borrowedAtTimestamp = nftForLend.lendingData.borrowedAtTimestamp.toNumber()
+    const nftForLend = await poolContract.lentNFTList(erc1155Address, erc1155TokenId, lenderWallet.address)
+    const lendingData = nftForLend.lendingData
+    const borrowedAtTimestamp = lendingData.borrowedAtTimestamp.toNumber() * 1000
     if(borrowedAtTimestamp === 0) {
-        throw new Error('Token was not borrowed')
-        // return
+        throw new Error(`Token was not borrowed. TokenAddress: ${erc1155Address} TokenId: ${erc1155TokenId.toString()}`)
     }
 
-    //console.log('BorrowedAt: ', borrowedAt)
+    const borrowedAt = new Date(borrowedAtTimestamp)
+    const nowTimeStamp = Date.now()
 
-    //poolContract.claimBorrowerCollateral()
+    const timeLeftMin = (Date.now() - borrowedAtTimestamp) / 60000
+    const durationMin = lendingData.durationHours.toNumber() * 60
+
+    console.log('BorrowedAt: ', borrowedAt)
+    console.log('TimeLeftMin: ', Math.round(timeLeftMin))
+    console.log('DurationMin: ', durationMin)
+
+    if(timeLeftMin <= durationMin) {
+        console.warn("You can claim collateral when lending time is up")
+        console.warn(`Wait ${Math.round(durationMin - timeLeftMin)} min and repeat`)
+        return 
+    }
+
+    const tx = await poolContract.claimBorrowerCollateral(erc1155Address, erc1155TokenId)
+    console.log(`ClaimBorrowerCollateral in process. ${tx.hash}`)
+    await tx.wait()
+    console.log(`ClaimBorrowerCollateral success. ${tx.hash}`)
 }
 
 main()

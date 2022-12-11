@@ -44,6 +44,7 @@ const main = async () => {
         const approveTransaction = await erc1155Contract.setApprovalForAll(collateralPollAddress, true);
         console.log(`Approve in process. ${approveTransaction.hash}`)
         await approveTransaction.wait();
+        console.log(`Approve success. ${approveTransaction.hash}`)
     }
     
     let tx = await poolContract.setLendSettings(asset, [tokenId], [amount], [assetItem])
