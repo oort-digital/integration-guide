@@ -65,7 +65,12 @@ const main = async () => {
     await tx.wait()
     console.log(`StartBorrowing success. ${tx.hash}`)
 
+     // borrower - stop rent
 
+     tx = await poolContract.connect(borrowerWallet).stopBorrowingByBorrower(lenderWallet.address, erc721Address, tokenId)
+     console.log(`StopBorrowing in process. ${tx.hash}`)
+     await tx.wait()
+     console.log(`StopBorrowing success. ${tx.hash}`)
 }
 
 main()
