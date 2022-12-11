@@ -6,16 +6,12 @@
 // 5. Wait until rent time is up
 // 6. do this example
 
-import { ethers, BigNumber } from "ethers"
-import { collateralPollAddress, daiAddress, erc1155Address, erc1155TokenId } from "../addresses";
-import { Collateral__factory, Erc1155__factory } from "../generated";
-import { borrowerWallet, lenderWallet } from "../wallets";
+import { collateralPollAddress, erc1155Address, erc1155TokenId } from "../addresses";
+import { Collateral__factory } from "../generated";
+import { lenderWallet } from "../wallets";
 
 // mumbai collateral address
 const poolContract = Collateral__factory.connect(collateralPollAddress, lenderWallet)
-
-// some NFT contract address, that you want to add to rent pool
-const erc1155Contract = Erc1155__factory.connect(erc1155Address, lenderWallet)
 
 const main = async () => {
 
@@ -27,7 +23,6 @@ const main = async () => {
     }
 
     const borrowedAt = new Date(borrowedAtTimestamp)
-    const nowTimeStamp = Date.now()
 
     const timeLeftMin = (Date.now() - borrowedAtTimestamp) / 60000
     const durationMin = lendingData.durationHours.toNumber() * 60
