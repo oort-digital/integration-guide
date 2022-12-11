@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "preserveConstEnums": true
+  },
+  "include": ["src/**/*"],
+ 
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "typeRoots": [
+    "node_modules/@types"
+  ],
+}
