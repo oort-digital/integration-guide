@@ -41,9 +41,9 @@ yarn ts-node .\src\lowCollateral\3_startBorrowing.ts
 ```
 
 ### Collateral use cases
-1. [Lender add and remove erc1155 asset from rent pool](src/collateral/1_addAndRemoveFromLendPool.ts)
+1. [Lender add and remove ERC1155 asset from rent pool](src/collateral/1_addAndRemoveFromLendPool.ts)
 2. [Borrower start and stop rent](src/collateral/2_startAndStopBorrowing)
 
 ### Low collateral use cases
-1. [Lender add and remove erc1155 asset from rent pool](src/lowCollateral/1_addAndRemoveFromLendPool.ts)
+1. [Lender add and remove ERC721 asset from rent pool](src/lowCollateral/1_addAndRemoveFromLendPool.ts)
 2. [Borrower start and stop rent](src/lowCollateral/2_startAndStopBorrowing)
