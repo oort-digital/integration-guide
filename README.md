@@ -15,11 +15,9 @@ or</br>
 yarn install
 ```
 
-### Edit secrets.ts
-Fill [secrets.ts](src/secrets.ts) 
-
-**rpc** - fill any mumbai rpc url. You may use [INFURA](https://www.infura.io) or some [free rpc](https://chainlist.org/chain/80001)<br/>
-**menomic** - seed phrase.<br/>
+### Edit [secrets.ts](src/secrets.ts)
+- **rpc** - fill any mumbai rpc url. You may use [INFURA](https://www.infura.io) or some [free rpc](https://chainlist.org/chain/80001)<br/>
+- **menomic** - seed phrase.<br/>
 
 ### Prepare wallets
 Use [Metamask](https://metamask.io/) or other wallet to generate two accounts from seed phares.<br/>
@@ -33,6 +31,12 @@ This wallet must have enought DAI to pay for NFTs rent.<br/>
 In examples we use [test DAI token](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F)  
 To get it - go by [link](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F#writeContract), connect borrower wallet and execute **mint** method
 
+### Edit [addresses.ts](src/addresses.ts)
+Enter lender test NFTs addresses and token ids <br/>
+- **erc1155Address**<br/>
+- **erc721Address**<br/>
+- **erc1155TokenId**<br/>
+- **erc721TokenId**<br/>
 
 ### Run example
 Chose file with example (see use cases bellow) and run it, like this one<br/>
