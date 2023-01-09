@@ -34,16 +34,16 @@ To get it - go by [link](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714
 
 
 ### Run example
-Chose file with example (see use cases bellow) and run it, like this one<br/>
+Chose file with an example (see use cases below) and run it, like this one<br/>
 ```
 yarn ts-node .\src\collateral\1_addAndRemoveFromLendPool.ts
 ```
 
 ### Collateral use cases
 1. [Lender add and remove ERC1155 asset from rent pool](src/collateral/1_addAndRemoveFromLendPool.ts)
-2. [Borrower start and stop rent](src/collateral/2_startAndStopBorrowing.ts)
+2. [Borrower starts and stop rent](src/collateral/2_startAndStopBorrowing.ts)
 3. [Claim borrower collateral](src/collateral/3_claimBorrowerCollateral.ts)
 
 ### Low collateral use cases
 1. [Lender add and remove ERC721 asset from rent pool](src/lowCollateral/1_addAndRemoveFromLendPool.ts)
-2. [Borrower start and stop rent](src/lowCollateral/2_startAndStopBorrowing.ts)
+2. [Borrower starts and stop rent](src/lowCollateral/2_startAndStopBorrowing.ts)
