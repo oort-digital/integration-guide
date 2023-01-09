@@ -15,7 +15,7 @@ yarn install
 ```
 
 ### Edit secrets.ts
-Fill [secrets.ts](src/secrets.json) 
+Fill in the [secrets.ts](src/secrets.json) 
 
 **rpc** - fill in any Mumbai RPC URL. You may use [INFURA](https://www.infura.io) or some [free RPC](https://chainlist.org/chain/80001)<br/>
 **menomic** - seed phrase.<br/>
