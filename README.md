@@ -32,6 +32,12 @@ This wallet must have enough DAI to pay for NFT rent.<br/>
 For example, we use a [test DAI token](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F)  
 To get it - go by [link](https://mumbai.polygonscan.com/address/0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F#writeContract), connect the borrower wallet and execute the **mint** method
 
+### Edit [addresses.ts](src/addresses.ts)
+Enter lender test NFTs addresses and token ids <br/>
+- **erc1155Address**<br/>
+- **erc721Address**<br/>
+- **erc1155TokenId**<br/>
+- **erc721TokenId**<br/>
 
 ### Run example
 Chose file with an example (see use cases below) and run it, like this one<br/>
